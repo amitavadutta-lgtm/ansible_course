@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository index
+    ansible.builtin.yum:
+      update_cache: yes
+
+  - name: Install apache
+    ansible.builtin.yum:
+      name: pcp-pmda-apache.x86_64
+      state: latest
+
+  - name: Install PHP
+    ansible.builtin.yum:
+      name: php.x86_64
+      state: latest
+  

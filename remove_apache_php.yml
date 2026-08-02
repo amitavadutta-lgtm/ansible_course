@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository index
+    ansible.builtin.yum:
+      update_cache: yes
+
+  - name: Remove apache
+    ansible.builtin.yum:
+      name: pcp-pmda-apache.x86_64
+      state: absent
+
+  - name: Remove PHP
+    ansible.builtin.yum:
+      name: php*
+      state: absent
+  
